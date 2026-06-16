@@ -33,3 +33,6 @@ df = (
 )
 
 display(df.limit(20))
+
+#save as delta table
+df.write.format("delta").mode("overwrite").saveAsTable("bronze_ais_events")
