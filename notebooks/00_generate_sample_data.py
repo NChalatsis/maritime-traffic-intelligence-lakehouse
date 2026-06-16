@@ -1,5 +1,5 @@
 from pyspark.sql import functions as F
-from pyspark.sql import types as T
+#from pyspark.sql import types as T
 
 num_events = 50000
 
@@ -33,6 +33,14 @@ df = (
 )
 
 display(df.limit(20))
+
+########################################################################################3
+#landing not working cause of Workspace Security Polizy Error. My workspace has disabled public DBFS root access (dbfs:/), which means you can't write directly to paths like dbfs:/tmp/
+#####################
+# landing_path = "dbfs:/tmp/maritime_lakehouse/sample_ais_events"
+# df.write.mode("overwrite").parquet(landing_path)
+#####################
+########################################################################################
 
 #save as delta table
 df.write.format("delta").mode("overwrite").saveAsTable("bronze_ais_events")
