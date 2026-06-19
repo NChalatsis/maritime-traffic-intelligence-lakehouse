@@ -1,15 +1,27 @@
 # maritime-traffic-intelligence-lakehouse
-Build a Databricks project that ingests, cleans, transforms, and orchestrates maritime AIS traffic data enriched with weather and port context.
 
+## Overview
 
-Business Problem
+## Business Problem
 
-Ένας λιμένας (port authority) θέλει να γνωρίζει:
+## Architecture
 
--ποια πλοία κινούνται στην περιοχή,
+## Data Model
 
--πόση είναι η κυκλοφορία ανά ημέρα,
+### Bronze Layer
 
--αν υπάρχουν σημάδια συμφόρησης (congestion),
+### Silver Layer
 
--αν ο καιρός επηρεάζει την κίνηση.
+### Gold Layer
+
+## Data Quality Checks
+
+## Technologies Used
+
+## Project Structure
+
+## How to Run
+
+## Sample Results
+
+## Future Enhancements
