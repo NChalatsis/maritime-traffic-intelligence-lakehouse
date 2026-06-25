@@ -6,22 +6,47 @@ An end-to-end lakehouse solution for maritime traffic analytics, transforming ve
 Maritime traffic generates large volumes of vessel movement data that must be ingested, validated and transformed before it can be used for operational reporting and analytics.
 
 The objective of this project is to build a scalable data pipeline capable of processing vessel movement events, applying data quality controls, and serving business-ready datasets for traffic monitoring, congestion analysis and operational reporting.
+
 ## Architecture
-This project follows the Medallion Architecture pattern:
 
-Raw Events
+The solution follows the Medallion Architecture pattern to transform raw maritime traffic data into trusted business-ready datasets.
 
-        ↓
-Bronze Layer
+![Architecture Diagram](docs/architecture.png)
 
-        ↓
-Silver Layer
+### Data Flow
 
-        ↓
-Reject Records
+1. **Data Sources**
 
-        ↓
-Gold Layer
+   * Synthetic AIS Generator
+   * NOAA AIS (planned)
+   * Weather API (future)
+
+2. **Bronze Layer**
+
+   * Stores raw AIS events.
+   * Preserves source data without business transformations.
+   * Includes audit metadata (`source_system`, `ingestion_timestamp`, `record_id`).
+
+3. **Silver Layer**
+
+   * Applies data quality validation.
+   * Cleans and standardizes incoming data.
+   * Routes invalid records into a dedicated reject table.
+   * Produces trusted datasets for downstream analytics.
+
+4. **Gold Layer**
+
+   * Builds business-ready datasets.
+   * Generates daily traffic metrics.
+   * Produces vessel speed distribution analytics.
+
+5. **Business Consumption**
+
+   * Operational reporting
+   * Dashboards
+   * Data quality monitoring
+   * Future analytics and machine learning use cases
+
 ## Data Model
 
 ### Bronze Layer
