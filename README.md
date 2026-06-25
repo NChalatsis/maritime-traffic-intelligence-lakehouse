@@ -1,7 +1,7 @@
 # maritime-traffic-intelligence-lakehouse
 
 ## Overview
-An end-to-end lakehouse solution for maritime traffic analytics, transforming vessel movement data into trusted analytical datasets and operational insights using Databricks, PySpark and Delta Lake.
+An end-to-end lakehouse solution for maritime traffic analytics, transforming vessel movement data into trusted business-ready datasets and operational insights using Databricks, PySpark and Delta Lake.
 ## Business Problem
 Maritime traffic generates large volumes of vessel movement data that must be ingested, validated and transformed before it can be used for operational reporting and analytics.
 
@@ -47,13 +47,27 @@ The solution follows the Medallion Architecture pattern to transform raw maritim
    * Data quality monitoring
    * Future analytics and machine learning use cases
 
+## Key Data Engineering Concepts
+
+This project demonstrates the implementation of several production-oriented Data Engineering concepts:
+
+* Medallion Architecture (Bronze, Silver, Gold)
+* Delta Lake storage
+* Data Quality Validation
+* Reject Record Handling
+* Audit Metadata & Data Lineage
+* Workflow Orchestration
+* Business-ready Data Modeling
+* Data Quality Monitoring
+
 ## Data Model
 
 ### Bronze Layer
 Stores raw AIS-like vessel events enriched with audit metadata.
 
 Main table:
-`bronze_ais_events`
+
+- `bronze_ais_events`
 
 Metadata columns:
 
@@ -64,7 +78,8 @@ Metadata columns:
 Applies data quality validations and business transformations.
 
 Main table:
-`silver_ais_events`
+
+- `silver_ais_events`
 
 Transformations:
 
@@ -76,13 +91,15 @@ Geographic coordinate validation
 - Movement flag generation
 
 Invalid records are redirected to:
-`bronze_ais_rejects`
+
+- `bronze_ais_rejects`
 ### Gold Layer
 Provides business-ready datasets and aggregated metrics.
 
 Main tables:
-`gold_traffic_daily`
-`gold_speed_distribution`
+
+- `gold_traffic_daily`
+- `gold_speed_distribution`
 
 Examples of generated metrics:
 
@@ -92,7 +109,7 @@ Examples of generated metrics:
 - Speed category distribution
 - Moving vs stationary vessel events
 ## Data Quality Framework
-The pipeline validates incoming records and separates invalid data into a dedicated reject table.
+Invalid records are preserved in a dedicated reject table instead of being silently discarded, ensuring full traceability across the pipeline.
 
 Current validation rules include:
 
@@ -124,23 +141,46 @@ Execution flow:
 2. Bronze Processing
 3. Silver Transformation
 4. Gold Aggregations
-5. Quality Checks
+5. Data Quality Validation
 ## Technologies Used
-- Databricks
-- PySpark
-- Delta Lake
-- GitHub
-- Databricks Workflows
+
+| Technology               | Purpose                                                                                                  |
+| ------------------------ | -------------------------------------------------------------------------------------------------------- |
+| **Databricks**           | Unified development environment for building, orchestrating and monitoring the data pipeline.            |
+| **PySpark**              | Distributed data processing framework used for ingestion, transformations, validations and aggregations. |
+| **Delta Lake**           | Storage layer providing ACID transactions, schema enforcement and reliable data management.              |
+| **Databricks Workflows** | Orchestrates the execution of the end-to-end pipeline from data generation to quality validation.        |
+| **GitHub**               | Version control and source code management using a feature branch workflow.                              |
+| **Git**                  | Supports collaborative development through feature branches, commits and pull requests.                  |
+
 ## Project Structure
 
 ## How to Run
 
 ## Sample Results
 
-## Future Enhancements
-- Real NOAA AIS data ingestion
-- Weather data enrichment
+## Roadmap
+
+### Version 1.0 ✅
+
+- Medallion Architecture
+- Bronze, Silver and Gold layers
+- Data Quality Framework
+- Reject Flow
+- Workflow Orchestration
+- Business Metrics
+
+### Version 1.1 🚧
+
+- NOAA AIS integration
+- Multi-source ingestion
+- Canonical schema mapping
+
+### Version 2.0 📅
+
+- Weather API enrichment
 - Incremental processing
+- Delta MERGE operations
 - Partition optimization
-- Monitoring dashboards
-- Advanced traffic and congestion analytics
+- Dashboards
+- Traffic congestion analytics
