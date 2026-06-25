@@ -12,3 +12,34 @@ def validate_coordinates(df: DataFrame) -> DataFrame:
         &
         F.col("longitude").between(-180, 180)
     )
+
+def add_silver_features(df: DataFrame) -> DataFrame:
+    """
+    Apply Silver layer transformations and derive business columns.
+    """
+
+    return (
+        df
+        .dropDuplicates(
+            ["vessel_id", "event_timestamp", "latitude", "longitude"]
+        )
+        .withColumn(
+            "event_date",
+            F.to_date("event_timestamp")
+        )
+        .withColumn(
+            "event_hour",
+            F.hour("event_timestamp")
+        )
+        .withColumn(
+            "speed_category",
+            F.when(F.col("speed_knots") == 0, "stationary")
+             .when(F.col("speed_knots") < 5, "slow")
+             .when(F.col("speed_knots") < 15, "medium")
+             .otherwise("fast")
+        )
+        .withColumn(
+            "is_moving",
+            F.col("speed_knots") > 0
+        )
+    )
