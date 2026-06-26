@@ -67,7 +67,7 @@ Stores raw AIS-like vessel events enriched with audit metadata.
 
 Main table:
 
-- `bronze_ais_events`
+- `bronze_ais_synthetic`
 
 Metadata columns:
 
