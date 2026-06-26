@@ -18,7 +18,7 @@ The solution follows the Medallion Architecture pattern to transform raw maritim
 1. **Data Sources**
 
    * Synthetic AIS Generator
-   * NOAA AIS (planned)
+   * NOAA AIS
    * Weather API (future)
 
 2. **Bronze Layer**
@@ -62,12 +62,18 @@ This project demonstrates the implementation of several production-oriented Data
 
 ## Data Model
 
-### Bronze Layer
-Stores raw AIS-like vessel events enriched with audit metadata.
+## Canonical Bronze Layer
 
-Main table:
+This project introduces a canonical bronze layer that unifies multiple AIS sources into a single standardized schema before Silver processing.
 
+Current source tables:
 - `bronze_ais_synthetic`
+- `bronze_ais_noaa`
+
+Canonical target:
+- `bronze_ais_canonical`
+
+This design decouples source ingestion from downstream transformations and makes the Silver layer source-agnostic.
 
 Metadata columns:
 
