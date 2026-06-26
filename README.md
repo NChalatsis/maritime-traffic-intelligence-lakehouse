@@ -161,26 +161,71 @@ Execution flow:
 
 ## Roadmap
 
-### Version 1.0 ✅
+# Project Roadmap
+
+This repository is intentionally designed as a long-term Data Engineering project that evolves alongside modern engineering practices.
+
+Rather than building a one-off portfolio project, the objective is to progressively transform it into a production-grade data platform.
+
+---
+
+## Version 1.0 – Lakehouse MVP ✅
+
+Completed
 
 - Medallion Architecture
-- Bronze, Silver and Gold layers
+- Bronze / Silver / Gold layers
+- Delta Lake tables
 - Data Quality Framework
-- Reject Flow
+- Reject Record Handling
 - Workflow Orchestration
-- Business Metrics
+- Architecture Documentation
+- GitHub Repository
 
-### Version 1.1 🚧
+---
 
-- NOAA AIS integration
-- Multi-source ingestion
-- Canonical schema mapping
+## Version 2.0 – Production Engineering 🚧
 
-### Version 2.0 📅
+In Progress
 
-- Weather API enrichment
-- Incremental processing
-- Delta MERGE operations
-- Partition optimization
-- Dashboards
-- Traffic congestion analytics
+- VS Code Development Environment
+- Python Package Structure
+- Modular Transformations
+- Production Repository Layout
+- Local Development Workflow
+
+---
+
+## Version 3.0 – Real Data Integration
+
+Planned
+
+- NOAA AIS Ingestion
+- Multi-source Architecture
+- Canonical Data Model
+- Schema Mapping
+- Data Contracts
+
+---
+
+## Version 4.0 – Advanced Lakehouse
+
+Planned
+
+- Incremental Processing
+- Delta MERGE
+- Partition Optimization
+- Performance Tuning
+
+---
+
+## Version 5.0 – Production Platform
+
+Planned
+
+- Unit Testing
+- CI/CD Pipeline
+- Docker
+- Infrastructure as Code
+- Monitoring & Alerting
+- Automated Deployments
