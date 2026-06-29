@@ -11,7 +11,7 @@ The objective of this project is to build a scalable data pipeline capable of pr
 
 The solution follows the Medallion Architecture pattern to transform raw maritime traffic data into trusted business-ready datasets.
 
-![Architecture Diagram](docs/architecture.png)
+![Architecture Diagram](docs/architecture1.0.1.png)
 
 ### Data Flow
 
@@ -164,8 +164,6 @@ Execution flow:
 ## How to Run
 
 ## Sample Results
-
-## Roadmap
 
 # Project Roadmap
 
